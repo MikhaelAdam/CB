@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs7pk2p41a8y5"]
+
+[ext_resource type="Script" path="res://scene/anakDajjal/anak_dajjal.gd" id="1_1hg02"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lgq7j"]
+radius = 20.0
+height = 64.0
+
+[node name="AnakDajjal" type="CharacterBody2D"]
+script = ExtResource("1_1hg02")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_lgq7j")

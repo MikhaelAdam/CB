@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnevmaenoqpwh"]
+
+[ext_resource type="Script" path="res://scene/ui/splash/splash_screen.gd" id="1_btqh3"]
+[ext_resource type="PackedScene" uid="uid://qsa7r2n2kn3i" path="res://scene/components/Game/game.tscn" id="2_f68d1"]
+[ext_resource type="Texture2D" uid="uid://b6s01r216log" path="res://arts/sprites/logo-CBDC.svg" id="3_l40na"]
+[ext_resource type="Texture2D" uid="uid://dkki6itrwqrf5" path="res://arts/sprites/jomok3.jpg" id="4_87lua"]
+[ext_resource type="Texture2D" uid="uid://bgb6g475ovnxu" path="res://arts/sprites/jomok5.jpg" id="5_5fo2f"]
+[ext_resource type="Texture2D" uid="uid://dhxvl8pq8b4pf" path="res://arts/sprites/jomok4.png" id="6_v3r3r"]
+[ext_resource type="Texture2D" uid="uid://dfs3v0i4xejtl" path="res://arts/sprites/jomok.jpg" id="7_c6dwo"]
+
+[node name="SplashScreen" type="Control" node_paths=PackedStringArray("splash_screen_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_btqh3")
+load_scene = ExtResource("2_f68d1")
+splash_screen_container = NodePath("SplashScreenContainer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SplashScreenContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect4" type="TextureRect" parent="SplashScreenContainer"]
+layout_mode = 2
+texture = ExtResource("3_l40na")
+
+[node name="TextureRect5" type="TextureRect" parent="SplashScreenContainer"]
+layout_mode = 2
+texture = ExtResource("7_c6dwo")
+
+[node name="TextureRect2" type="TextureRect" parent="SplashScreenContainer"]
+layout_mode = 2
+texture = ExtResource("5_5fo2f")
+
+[node name="TextureRect" type="TextureRect" parent="SplashScreenContainer"]
+layout_mode = 2
+texture = ExtResource("4_87lua")
+
+[node name="TextureRect3" type="TextureRect" parent="SplashScreenContainer"]
+layout_mode = 2
+texture = ExtResource("6_v3r3r")

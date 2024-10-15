@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6tkcklcsda60"]
+
+[ext_resource type="PackedScene" uid="uid://wj62xrcappwu" path="res://nodes/components/FishComponent.tscn" id="1_mmnit"]
+[ext_resource type="Texture2D" uid="uid://cf3r4muhnshe5" path="res://arts/sprite/cod_fish.png" id="2_wig5t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krqwr"]
+size = Vector2(42, 20)
+
+[node name="CodFish" type="CharacterBody2D" groups=["cod"]]
+collision_layer = 4
+collision_mask = 0
+
+[node name="FishComponent" parent="." node_paths=PackedStringArray("actor", "sprite") instance=ExtResource("1_mmnit")]
+actor = NodePath("..")
+sprite = NodePath("../Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_wig5t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_krqwr")

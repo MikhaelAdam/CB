@@ -1,7 +1,6 @@
-extends Node
+extends Area2D
 
-func add_to_2D(node: Node2D) -> void:
-	$"2DWorld".add_child(node)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -9,4 +8,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$CollisionShape2D.shape.size = $Sprite2D.region_rect.size
+
+
+
+func _on_timer_timeout() -> void:
+	$Sprite2D.region_rect.size.x += 32
+	$Sprite2D.region_rect.size.y += 32

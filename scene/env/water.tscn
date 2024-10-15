@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://nt7y44x8yws0"]
+
+[ext_resource type="Script" path="res://nodes/env/water.gd" id="1_3b6yo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0s2f"]
+
+[node name="Water" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_3b6yo")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 198)
+shape = SubResource("RectangleShape2D_a0s2f")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

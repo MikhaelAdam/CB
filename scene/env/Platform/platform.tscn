@@ -1,11 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctjvlahci7o4t"]
 
-[ext_resource type="Script" path="res://scene/Platform/platform.gd" id="1_6onqp"]
+[ext_resource type="Script" path="res://scene/env/Platform/platform.gd" id="1_6onqp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpq4o"]
 
 [node name="StaticBody2D" type="StaticBody2D"]
-position = Vector2(643, 270)
 script = ExtResource("1_6onqp")
 metadata/_edit_group_ = true
 

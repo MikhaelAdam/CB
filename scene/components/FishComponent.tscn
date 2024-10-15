@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://wj62xrcappwu"]
+
+[sub_resource type="GDScript" id="GDScript_e665k"]
+script/source = "extends Node2D
+class_name FishComponent
+@export var actor:CharacterBody2D
+@export var sprite:Sprite2D
+@onready var dir:Vector2 = Vector2(randf_range(-1.0,1.0), randf_range(-1.0,1.0)).normalized()
+const SPEED:float = 50.0
+var in_water:bool=false
+var gravity:float = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+
+func new_dir()->Vector2:return Vector2(randf_range(-1.0,1.0), randf_range(-1.0,1.0)).normalized()
+
+func _physics_process(delta:float)-> void:
+	if not in_water:
+		actor.velocity.y += gravity * delta
+		dir = new_dir()
+	else:
+		actor.velocity = dir * SPEED
+		if dir.x < 0:
+			sprite.flip_h = true
+		else:
+			sprite.flip_h = false
+	actor.move_and_slide()
+	if actor.global_position.y > 10000000:
+		actor.queue_free()
+func _on_area_detect_area_entered(_area:Area2D)->void:
+	in_water = true
+func _on_area_detect_area_exited(_area:Area2D)->void:
+	in_water = false
+func _on_sailor_detect_area_entered(_area:Area2D)->void:
+	sprite.self_modulate = Color(\"00ffff\")
+func _on_sailor_detect_area_exited(_area:Area2D)->void:
+	sprite.self_modulate = Color(\"ffffff\")
+func _on_area_detect_body_entered(_body:Node2D)->void:
+	dir = new_dir()
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sriow"]
+size = Vector2(18, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fuxj"]
+size = Vector2(14, 8)
+
+[node name="FishComponent" type="Node2D"]
+script = SubResource("GDScript_e665k")
+
+[node name="AreaDetect" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaDetect"]
+shape = SubResource("RectangleShape2D_sriow")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
+
+[node name="SailorDetect" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SailorDetect"]
+shape = SubResource("RectangleShape2D_2fuxj")
+
+[connection signal="area_entered" from="AreaDetect" to="." method="_on_area_detect_area_entered"]
+[connection signal="area_exited" from="AreaDetect" to="." method="_on_area_detect_area_exited"]
+[connection signal="body_entered" from="AreaDetect" to="." method="_on_area_detect_body_entered"]
+[connection signal="area_entered" from="SailorDetect" to="." method="_on_sailor_detect_area_entered"]
+[connection signal="area_exited" from="SailorDetect" to="." method="_on_sailor_detect_area_exited"]

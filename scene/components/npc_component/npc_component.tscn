@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr4w2r3ecg3vx"]
+
+[ext_resource type="Script" path="res://scene/components/npc_component/npc_component.gd" id="1_ubgpc"]
+[ext_resource type="Script" path="res://scene/components/hitbox/hitbox.gd" id="2_hksnw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdosn"]
+
+[node name="NPCComponent" type="Node2D"]
+script = ExtResource("1_ubgpc")
+dialogue_text = Array[String](["Hello", "How Are You?"])
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("2_hksnw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_kdosn")

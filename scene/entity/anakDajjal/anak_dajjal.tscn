@@ -11,3 +11,8 @@ script = ExtResource("1_1hg02")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_lgq7j")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true

@@ -14,3 +14,12 @@ shape = SubResource("CapsuleShape2D_lgq7j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+position_smoothing_enabled = true
+=======
+>>>>>>> a31af97884830770857c6a251d6a659863900c2c
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+>>>>>>> 5e68c3ff502927cd6625a3304049158a424544db

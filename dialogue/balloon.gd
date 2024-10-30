@@ -166,5 +166,5 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 func _on_dialogue_label_spoke(letter, letter_index, speed):
 	if not letter in [".", " "]:
-		$TalkSound.pitch_scale = randf_range(0.9, 1.1)
+		$TalkSound.pitch_scale = randf_range(1.9, 2.1)
 		$TalkSound.play()
